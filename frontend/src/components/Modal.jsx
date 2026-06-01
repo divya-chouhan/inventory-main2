@@ -1,8 +1,8 @@
-import { useEffect, useRef } from "react";
+import { memo, useEffect, useRef } from "react";
 import { X } from "lucide-react";
 import { gsap } from "gsap";
 
-export default function Modal({ title, onClose, children, footer, wide }) {
+const Modal = memo(function Modal({ title, onClose, children, footer, wide }) {
   const overlay = useRef(null);
   const box = useRef(null);
 
@@ -37,4 +37,6 @@ export default function Modal({ title, onClose, children, footer, wide }) {
       </div>
     </div>
   );
-}
+});
+
+export default Modal;
