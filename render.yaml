@@ -1,0 +1,30 @@
+# Render.com blueprint — deploys the backend API + a free Postgres database.
+# Import this in Render: New + > Blueprint > connect your GitHub repo.
+databases:
+  - name: iom-db
+    plan: free
+    databaseName: iom
+    user: iom
+
+services:
+  - type: web
+    name: iom-backend
+    runtime: docker
+    plan: free
+    rootDir: backend
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: iom-db
+          property: connectionString
+      - key: ENVIRONMENT
+        value: production
+      - key: AUTO_INIT_DB
+        value: "true"
+      - key: SEED_DEMO_DATA
+        value: "true"
+      # Set this to your deployed frontend origin after the first deploy.
+      - key: CORS_ORIGINS
+        value: "http://localhost:5173"

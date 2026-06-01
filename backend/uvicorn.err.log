@@ -1,0 +1,7 @@
+At line:1 char:82
++ ... ite:///./iom-dev.db; $env:CORS_ORIGINS=http://localhost:5173,http://l ...
++                                                                 ~
+Missing argument in parameter list.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : MissingArgument
+ 
