@@ -4,6 +4,7 @@ import { gsap } from "gsap";
 import { Customers as Api, apiError } from "../api/client";
 import { useToast } from "../components/Toast.jsx";
 import Modal from "../components/Modal.jsx";
+import Input from "../components/Input.jsx";
 import { ConfirmDialog, Spinner, EmptyState } from "../components/Misc.jsx";
 
 const blank = { name: "", email: "", phone: "" };
@@ -174,17 +175,17 @@ export default function Customers() {
         >
           <div className="field">
             <label>Full Name</label>
-            <input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Jane Doe" />
+            <Input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Jane Doe" />
             {errors.name && <div className="field-error">{errors.name}</div>}
           </div>
           <div className="field">
             <label>Email {editing && "(locked)"}</label>
-            <input value={form.email} disabled={!!editing} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="jane@example.com" />
+            <Input value={form.email} disabled={!!editing} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="jane@example.com" />
             {errors.email && <div className="field-error">{errors.email}</div>}
           </div>
           <div className="field">
             <label>Phone</label>
-            <input value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} placeholder="+1 555 000 0000" />
+            <Input value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} placeholder="+1 555 000 0000" />
           </div>
         </Modal>
       )}

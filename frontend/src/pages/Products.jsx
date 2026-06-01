@@ -4,6 +4,7 @@ import { gsap } from "gsap";
 import { Products as Api, apiError } from "../api/client";
 import { useToast } from "../components/Toast.jsx";
 import Modal from "../components/Modal.jsx";
+import Input from "../components/Input.jsx";
 import { ConfirmDialog, Spinner, EmptyState } from "../components/Misc.jsx";
 
 const fmt = (n) => "$" + Number(n).toLocaleString(undefined, { minimumFractionDigits: 2 });
@@ -184,7 +185,7 @@ export default function Products() {
         >
           <div className="field">
             <label>SKU {editing && "(locked)"}</label>
-            <input
+            <Input
               value={form.sku} disabled={!!editing}
               onChange={(e) => setForm({ ...form, sku: e.target.value })}
               placeholder="e.g. KB-MX-001"
@@ -193,7 +194,7 @@ export default function Products() {
           </div>
           <div className="field">
             <label>Name</label>
-            <input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Product name" />
+            <Input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Product name" />
             {errors.name && <div className="field-error">{errors.name}</div>}
           </div>
           <div className="field">
@@ -203,12 +204,12 @@ export default function Products() {
           <div className="field-row">
             <div className="field">
               <label>Price (USD)</label>
-              <input type="number" step="0.01" min="0" value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} placeholder="0.00" />
+              <Input type="number" step="0.01" min="0" value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} placeholder="0.00" />
               {errors.price && <div className="field-error">{errors.price}</div>}
             </div>
             <div className="field">
               <label>Stock</label>
-              <input type="number" min="0" step="1" value={form.stock} onChange={(e) => setForm({ ...form, stock: e.target.value })} placeholder="0" />
+              <Input type="number" min="0" step="1" value={form.stock} onChange={(e) => setForm({ ...form, stock: e.target.value })} placeholder="0" />
               {errors.stock && <div className="field-error">{errors.stock}</div>}
             </div>
           </div>

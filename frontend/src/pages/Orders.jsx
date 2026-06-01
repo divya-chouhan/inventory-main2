@@ -6,6 +6,7 @@ import {
 } from "../api/client";
 import { useToast } from "../components/Toast.jsx";
 import Modal from "../components/Modal.jsx";
+import Input from "../components/Input.jsx";
 import { Spinner, EmptyState } from "../components/Misc.jsx";
 
 const fmt = (n) => "$" + Number(n).toLocaleString(undefined, { minimumFractionDigits: 2 });
@@ -204,7 +205,7 @@ export default function Orders() {
                     </option>
                   ))}
                 </select>
-                <input type="number" min="1" value={l.quantity}
+                <Input type="number" min="1" value={l.quantity}
                   onChange={(e) => setLine(i, { quantity: e.target.value })}
                   style={{ padding: "11px 13px", borderRadius: 11, background: "var(--bg-2)", border: "1px solid var(--border)", color: "var(--text)" }} />
                 <button className="act act-danger" onClick={() => removeLine(i)} disabled={lines.length === 1} title="Remove" aria-label={`Remove line item ${i + 1}`}>
